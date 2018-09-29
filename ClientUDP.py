@@ -56,7 +56,7 @@ print('Esperando resuesta del servidor')
 Message = 'Esperando para recibir datos...'
 
 try:
-    unicast.sendto(Message, Server_IP)
+    unicast.sendto(Message.encode('utf-8'), Server_IP)
     d = unicast.recvfrom(buffer_size)
     reply = d[0]
     addr = d[1]
