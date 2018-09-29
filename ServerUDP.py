@@ -5,10 +5,11 @@ import hashlib
 
 def read_in_chunks(file_object, chunk_size=1024):
     while True:
-        chunk_data = file_object.read(chunk_size)
-        if not chunk_data:
-            break
-        yield chunk_data
+        with open(file_object, 'rb') as f:
+            chunk_data = f.read(chunk_size)
+            if not chunk_data:
+                break
+            yield chunk_data
 
 def getSize(file_object):
     file_object.seek(0,2)
