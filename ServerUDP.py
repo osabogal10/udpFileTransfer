@@ -62,7 +62,7 @@ while Clients < Clients_to_join:
 
     reply = 'Espere la transferencia (?'
 
-    unicast.sendto(reply.encode(), addr)
+    unicast.sendto(reply.encode('utf-8'), addr)
 
     print('')
     print('Respuesta del cliente desde: [', addr[0],': ',str(addr[1]),'] = ',data.strip())
