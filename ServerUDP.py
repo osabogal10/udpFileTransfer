@@ -77,7 +77,7 @@ if Clients == Clients_to_join:
     bytes = open(file_path)
     size = getSize(bytes)
 
-    multicast.sendto(str(size), Multicast_group)
+    multicast.sendto(str(size).encode('utf-8'), Multicast_group)
 
     for pieza in read_in_chunks(bytes, 1024):
         multicast.sendto(pieza, Multicast_group)

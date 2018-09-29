@@ -9,7 +9,7 @@ def md5Sum(filename, blocksize=1024):
             hash.update(block)
     return hash.hexdigest()
 
-Multicast_group = ('224.0.0.1',33333)
+Multicast_group = ('',33333)
 Server_IP = (input('IP del servidor:'),22222)
 buffer_size = 1024
 
@@ -47,8 +47,8 @@ except socket.error:
 try:
     multicast.bind(Multicast_group)
     print('Bind de Multicast completo')
-except socket.error:
-    print('Fallo bind de Multicast')
+except socket.error as msg:
+    print('Fallo bind de Multicast',  msg)
     sys.exit()
 
 print('Esperando resuesta del servidor')
