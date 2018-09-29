@@ -3,10 +3,15 @@ import sys
 import time
 import hashlib
 
+global size
+
+size = 0
+
 def read_in_chunks(file_object, chunk_size=1024):
     while True:
-        with open(file_object, 'rb') as f:
+        with open(file_path, 'rb') as f:
             chunk_data = f.read(chunk_size)
+            size = getSize(f)
             if not chunk_data:
                 break
             yield chunk_data
@@ -75,12 +80,12 @@ if Clients == Clients_to_join:
     print('- Enviando datos al siguiente grupo: ', str(Multicast_group))
     print('- Enviando el siguiente archivo: ', str(file_path))
 
-    bytes = open(file_path)
-    size = getSize(bytes)
+
+    #bytes_data = open(file_path)
 
     multicast.sendto(str(size).encode('utf-8'), Multicast_group)
 
-    for pieza in read_in_chunks(bytes, 1024):
+    for pieza in read_in_chunks(file_path, 1024):
         multicast.sendto(pieza, Multicast_group)
         time.sleep(0.02)
 

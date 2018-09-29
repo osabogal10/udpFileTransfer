@@ -74,7 +74,7 @@ print('')
 print('Tamaño del archivo: ', str(size))
 print('')
 
-file = open('./dataClient/homeroRecibido.jpg', 'w')
+file = open('./dataClient/homeroRecibido.jpg', 'wb')
 file_path = './dataClient/homeroRecibido.jpg'
 
 total = 0
