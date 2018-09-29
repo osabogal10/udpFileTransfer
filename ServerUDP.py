@@ -3,13 +3,12 @@ import sys
 import time
 import hashlib
 
-global size
-
 size = 0
 
-def read_in_chunks(file_object, chunk_size=1024):
+def read_in_chunks(path, chunk_size=1024):
+    global size
     while True:
-        with open(file_path, 'rb') as f:
+        with open(path, 'rb') as f:
             chunk_data = f.read(chunk_size)
             size = getSize(f)
             if not chunk_data:

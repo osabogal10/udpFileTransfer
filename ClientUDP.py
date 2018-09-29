@@ -74,20 +74,20 @@ print('')
 print('Tamaño del archivo: ', str(size))
 print('')
 
-file = open('./dataClient/homeroRecibido.jpg', 'wb')
+#file = open('./dataClient/homeroRecibido.jpg', 'wb')
 file_path = './dataClient/homeroRecibido.jpg'
 
 total = 0
 while True:
     pieza, Multicast_group_loop = multicast.recvfrom(buffer_size)
-    file.write(pieza)
+    with open(file_path, 'wb') as f:
+        f.write(pieza)
+        total += len(pieza)
+        print('Tamaño actual recibido: ',str(total))
+        if total == size:
+            f.close()
+            break
 
-    total += len(pieza)
-    print('Tamaño actual recibido: ',str(total))
-    if total == size:
-        break
-
-file.close()
 hashsum = md5Sum(file_path)
 
 print('')
