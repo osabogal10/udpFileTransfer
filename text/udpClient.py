@@ -1,5 +1,6 @@
 from socket import *
-serverName = '192.168.0.11'
+serverName = '127.0.0.1'
+serverName = input('IP del servidor')
 serverPort = 12000
 clientSocket = socket(AF_INET, SOCK_DGRAM)
 message = input('Input lowercase sentence:')
