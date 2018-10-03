@@ -2,7 +2,7 @@ import socket, os, sys, threading, hashlib
 
 from time import sleep
 
-SIZE=32768
+SIZE=2048
 hasher = hashlib.md5()
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
