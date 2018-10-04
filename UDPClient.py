@@ -35,7 +35,8 @@ try:
     sent = sock.sendto(message, server_address)
     start_time = time.time()
     #data = sock.recv(1024)
-    filename = './recibido/newfile1.mp3'
+    filename = sys.argv[1]
+    #filename = './recibido/newfile1.jpg'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     i = 0
     bytesReceived = 0
@@ -86,6 +87,7 @@ try:
         l.info('%s;%s', 'BYTES_SENT',bytesSent)
 
         l.info('%s;%s', 'BYTES_RECEIVED', bytesReceived)
+        print('File size', str(os.path.getsize(filename)))
 
         numPaquetesServ, address = sock.recvfrom(SIZE)
         numPaquetesServ = numPaquetesServ.decode('utf-8')
@@ -100,5 +102,8 @@ finally:
     elapsed_time = time.time() - start_time
     l.info('%s;%s','ELAPSED_TIME', elapsed_time)
     l.info('------------------------------')
+    # clean up file handlers
+    logging.shutdown()
+    os.rename('./logs/UDP.log', './logs/UDP{}.log'.format(miIdCliente.decode('utf-8')))
 
     sock.close()
