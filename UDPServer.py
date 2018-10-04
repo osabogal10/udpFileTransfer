@@ -60,10 +60,14 @@ class udp_transfer:
             hash_servidor = hasher.hexdigest()
 
             self.sock.sendto(file_name.encode('utf-8'), address)
+            self.sock.sendto(str(os.path.getsize(file_name)).encode('utf-8'), address)
             self.sock.sendto(str(id_cliente).encode('utf-8'), address)
             self.sock.sendto(str(hash_servidor).encode('utf-8'), address)
             self.sock.sendto(str(bytesSent).encode('utf-8'), address)
             self.sock.sendto(str(i).encode('utf-8'), address)
+
+
+
 
 
 
