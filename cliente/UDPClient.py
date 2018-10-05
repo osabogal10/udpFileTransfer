@@ -16,12 +16,12 @@ l.addHandler(sh)
 l.setLevel(DEBUG)
 
 miIdCliente = 0
-
+#
 SIZE=60000
 hasher = hashlib.md5()
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
+#
 server_address = ('157.253.205.7', 10000)
 message = b'Listo'
 showtime = strftime("%Y-%m-%d %H:%M:%S", gmtime())

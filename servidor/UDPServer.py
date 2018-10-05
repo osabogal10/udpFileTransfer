@@ -8,10 +8,9 @@ hasher = hashlib.md5()
 
 class udp_transfer:
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
     # Bind the socket to the port
     def __init__(self):
-        server_address = ('localhost', 10000)
+        server_address = ('157.253.205.7', 10000)
         num_clients = int(sys.argv[1])
         file_name = sys.argv[2]
 
@@ -19,6 +18,7 @@ class udp_transfer:
 
         print('Argument List:', str(sys.argv))
         self.sock.bind(server_address)
+        self.sock.setblocking(True)
         print('\nwaiting to receive message')
         threads = []
         id_cliente =1
