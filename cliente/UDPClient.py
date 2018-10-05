@@ -83,14 +83,14 @@ try:
         else:
             l.info('FILE_DELIVERY;FAILURE')
 
-        bytesSent, address = sock.recvfrom(SIZE)
+        bytesSent, address = sock.recvfrom(32)
         bytesSent = bytesSent.decode('utf-8')
         l.info('%s;%s', 'BYTES_SENT',bytesSent)
 
         l.info('%s;%s', 'BYTES_RECEIVED', bytesReceived)
         print('File size', str(os.path.getsize(filename)))
 
-        numPaquetesServ, address = sock.recvfrom(SIZE)
+        numPaquetesServ, address = sock.recvfrom(32)
         numPaquetesServ = numPaquetesServ.decode('utf-8')
         numPaquetesCli = i
 
