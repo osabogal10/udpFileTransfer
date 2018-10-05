@@ -62,15 +62,15 @@ try:
         hasher.update(buf)
         hash_cliente = hasher.hexdigest()
         print('hash_ cliente: ', hasher.hexdigest())
-        rcv_file_name, address = sock.recvfrom(32).lstrip('0')
+        rcv_file_name, address = sock.recvfrom(32)
 
-        l.info('%s;%s', 'FILE_NAME', rcv_file_name.decode('utf-8'))
+        l.info('%s;%s', 'FILE_NAME', rcv_file_name.decode('utf-8').lstrip('0'))
 
-        rcv_file_size, address = sock.recvfrom(32).lstrip('0')
-        l.info('%s;%s', 'FILE_SIZE',rcv_file_size.decode('utf-8'))
+        rcv_file_size, address = sock.recvfrom(32)
+        l.info('%s;%s', 'FILE_SIZE',rcv_file_size.decode('utf-8').lstrip('0'))
 
-        miIdCliente, address = sock.recvfrom(32).lstrip('0')
-        l.info('%s;%s', 'CLIENT', miIdCliente.decode('utf-8'))
+        miIdCliente, address = sock.recvfrom(32)
+        l.info('%s;%s', 'CLIENT', miIdCliente.decode('utf-8').lstrip('0'))
         miIdCliente = miIdCliente.decode('utf-8')
 
         hash_servidor, address = sock.recvfrom(32)
