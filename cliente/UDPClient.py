@@ -73,7 +73,7 @@ try:
         l.info('%s;%s', 'CLIENT', miIdCliente.decode('utf-8'))
         miIdCliente = miIdCliente.decode('utf-8')
 
-        hash_servidor, address = sock.recvfrom(SIZE)
+        hash_servidor, address = sock.recvfrom(32)
         hash_servidor = hash_servidor.decode('utf-8')
 
         print(hash_servidor)
