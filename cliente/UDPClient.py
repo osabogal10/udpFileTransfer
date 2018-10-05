@@ -66,7 +66,8 @@ try:
         stop = False
         while not stop:
             print('arroba')
-            cosa, address = sock.recvfrom(8).decode('utf-8')
+            cosa, address = sock.recvfrom(8)
+            cosa = cosa.decode('utf-8')
             if str('@') in  cosa:
                 stop = False
             else:
