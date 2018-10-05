@@ -6,8 +6,9 @@ import logging
 from logging import getLogger, StreamHandler, Formatter, DEBUG
 
 l  = getLogger()
-os.makedirs(os.path.dirname('./logs/UDP.log'), exist_ok=True)
-logging.basicConfig(format='%(message)s', filename='./logs/UDP.log',  level=logging.DEBUG)
+logfile = './logs/UDP'+socket.gethostname()+'.log'
+os.makedirs(os.path.dirname(logfile), exist_ok=True)
+logging.basicConfig(format='%(message)s', filename=logfile,  level=logging.DEBUG)
 sh = StreamHandler(stderr)
 sh.setLevel(DEBUG)
 f  = Formatter(' %(message)s')
