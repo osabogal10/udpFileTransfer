@@ -63,10 +63,14 @@ try:
         hash_cliente = hasher.hexdigest()
         sleep(2)
         print('hash_ cliente: ', hasher.hexdigest())
-        while True:
+        stop = False
+        while not stop:
             print('arroba')
-            if str('@') not in  sock.recvfrom(8).decode('utf-8'):
-                break
+            cosa, address = sock.recvfrom(8).decode('utf-8')
+            if str('@') in  cosa:
+                stop = False
+            else:
+                stop = True
 
         rcv_file_name, address = sock.recvfrom(32)
         #rcv_file_name, address = sock.recvfrom(32)
