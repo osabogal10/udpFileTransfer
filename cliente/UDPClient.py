@@ -105,6 +105,6 @@ finally:
     l.info('------------------------------')
     # clean up file handlers
     logging.shutdown()
-    os.rename('./logs/UDP.log', './logs/UDP{}.log'.format(miIdCliente))
+    #os.rename('./logs/UDP.log', './logs/UDP{}.log'.format(miIdCliente))
 
     sock.close()
