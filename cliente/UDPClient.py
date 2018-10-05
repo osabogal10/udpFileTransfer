@@ -1,5 +1,5 @@
 import socket, os, sys, threading, hashlib, time, logging
-from time import gmtime, strftime
+from time import gmtime, strftime,sleep
 
 from sys     import stderr
 import logging
@@ -61,6 +61,7 @@ try:
         buf = f.read()
         hasher.update(buf)
         hash_cliente = hasher.hexdigest()
+        sleep(2)
         print('hash_ cliente: ', hasher.hexdigest())
         rcv_file_name, address = sock.recvfrom(32)
 
@@ -100,7 +101,7 @@ try:
 
 finally:
     print('closing socket')
-    elapsed_time = time.time() - start_time
+    elapsed_time = time.time() - start_time-2
     l.info('%s;%s','ELAPSED_TIME', elapsed_time)
     l.info('------------------------------')
     # clean up file handlers

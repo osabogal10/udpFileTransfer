@@ -58,7 +58,7 @@ class udp_transfer:
             buf = file.read()
             hasher.update(buf)
             hash_servidor = hasher.hexdigest()
-
+            sleep(2)
             self.sock.sendto(str(file_name).encode('utf-8').zfill(32), address)
             self.sock.sendto(str(os.path.getsize(file_name)).encode('utf-8').zfill(32), address)
             self.sock.sendto(str(id_cliente).encode('utf-8').zfill(32), address)
