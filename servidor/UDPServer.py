@@ -46,14 +46,14 @@ class udp_transfer:
             while data != bytes(''.encode()):
                 sent = self.sock.sendto(data, address)
                 data = file.read(SIZE)
-                print('data',data)
-                print('{}. sent {} bytes back to {}'.format(i,sent, address))
+                #print('data',data)
+                #print('{}. sent {} bytes back to {}'.format(i,sent, address))
                 i = i +1
                 bytesSent = bytesSent+sent
                 if sent != SIZE:
                     sent = self.sock.sendto(b'Fin', address)
                     print('Fin')
-                    print('sent {} bytes back to {}'.format(sent, address))
+                    #print('sent {} bytes back to {}'.format(sent, address))
                     break
             buf = file.read()
             hasher.update(buf)
