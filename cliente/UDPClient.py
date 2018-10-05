@@ -15,19 +15,19 @@ sh.setFormatter(f)
 l.addHandler(sh)
 l.setLevel(DEBUG)
 
-
+miIdCliente = 0
 
 SIZE=60000
 hasher = hashlib.md5()
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-server_address = ('localhost', 10000)
+server_address = ('157.253.205.7', 10000)
 message = b'Listo'
 showtime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 l.info('%s;%s','DATE',showtime)
 
-
+start_time =0
 try:
     # Send data
     print('Connected successfully')
@@ -35,7 +35,7 @@ try:
     sent = sock.sendto(message, server_address)
     start_time = time.time()
     #data = sock.recv(1024)
-    filename = sys.argv[1]
+    filename = './'+sys.argv[1]
     #filename = './recibido/newfile1.jpg'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     i = 0
@@ -71,6 +71,7 @@ try:
 
         miIdCliente, address = sock.recvfrom(SIZE)
         l.info('%s;%s', 'CLIENT', miIdCliente.decode('utf-8'))
+        miIdCliente = miIdCliente.decode('utf-8')
 
         hash_servidor, address = sock.recvfrom(SIZE)
         hash_servidor = hash_servidor.decode('utf-8')
@@ -104,6 +105,6 @@ finally:
     l.info('------------------------------')
     # clean up file handlers
     logging.shutdown()
-    os.rename('./logs/UDP.log', './logs/UDP{}.log'.format(miIdCliente.decode('utf-8')))
+    os.rename('./logs/UDP.log', './logs/UDP{}.log'.format(miIdCliente))
 
     sock.close()
